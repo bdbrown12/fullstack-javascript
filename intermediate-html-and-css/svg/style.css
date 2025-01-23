@@ -1,0 +1,43 @@
+*{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: lightblue;
+}
+
+.container{
+    
+}
+
+.navbar{
+    display: flex;
+    justify-content: right;
+}
+
+li{
+    list-style-type: none;
+}
+
+ul{
+    align-self: center;
+    margin: 1rem;
+}
+
+ul:nth-child(1){
+    margin-right: auto;
+}
+
+svg{
+    cursor: pointer;
+    margin: 1rem;
+
+}
+
+svg:hover{
+    fill: grey;
+}
+
+.github-logo{
+    background-size: 10px 10px;
+}
