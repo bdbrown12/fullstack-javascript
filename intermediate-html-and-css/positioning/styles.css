@@ -1,0 +1,24 @@
+.parent{
+    background-color: blue;
+    padding: 5px;
+    position: relative;
+}
+
+.parent div{
+    padding: 1rem;
+}
+
+.child-one{
+
+    background-color: green;
+    position: absolute;
+    top: 0px;
+}
+
+.child-two{
+    background-color: red;
+}
+
+.child-three{
+    background-color: purple;
+}
