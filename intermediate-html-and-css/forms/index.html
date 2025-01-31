@@ -10,12 +10,118 @@
     <form action="example.com/path" method="post">
         <div class="container">
             <label for="first_name">First Name: </label>
-            <input type="text" id="first_name" placeholder="Enter First Name">
+            <input type="text" id="first_name" placeholder="Enter First Name" name="first_name">
         </div>
         <div class="container">
             <label for="first_name">Last Name: </label>
-            <input type="text" id="last_name" placeholder="Enter Last Name">
+            <input type="text" id="last_name" placeholder="Enter Last Name" name="last_name">
         </div>
+
+        <div class="container" style="display: block;">
+            <h3>Dropdown list</h3>
+            <select name="Car" id="">
+                <option value="mercedes">Mercedes</option>
+                <option value="tesla">Tesla</option>
+                <option value="volvo">Volvo</option>
+                <option value="bmw">BMW</option>
+                <option value="mini">Mini</option>
+                <option value="ford">Ford</option>
+            </select>
+        </div>
+
+        <div class="container" style="display: block;">
+            <h3>List with subsections (optgroup)</h3>
+            <select name="fashion" id="">
+                <optgroup label="Clothing">
+                    <option value="t_shirt">T-Shirts</option>
+                    <option value="sweater">Sweaters</option>
+                    <option value="coats">Coats</option>
+                </optgroup>
+                <optgroup label="Foot Wear">
+                    <option value="sneakers">Sneakers</option>
+                    <option value="boots">Boots</option>
+                    <option value="sandals">Sandals</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="container" style="display: block;">
+            <h2>Radio buttons</h2>
+            <h3>Ticket Type</h3>
+            <div style="margin-top: .5rem;">
+                <input type="radio" id="child" name="ticket_type" value="child">
+                <label for="child">Child</label>
+            </div>
+            <div>
+                <input type="radio" id="adult" name="ticket_type" value="adult">
+                <label for="adult">Adult</label>
+            </div>
+            <div>
+                <input type="radio" id="senior" name="ticket_type" value="senior">
+                <label for="senior">Senior</label>
+            </div>
+        </div>
+
+        <div class="container" style="display: block;">
+            <h2>Checkboxes</h2>
+            <h3 style="margin-bottom: .5rem;">Pizza Toppings</h3>
+            <div>
+                <input type="checkbox" id="sausage" name="topping" value="sausage">
+                <label for="sausage">Sausage</label>
+            </div>
+            <div>
+                <input type="checkbox" id="olives" name="topping" value="olives">
+                <label for="olives">Olives</label>
+            </div>
+            <div>
+                <input type="checkbox" id="cheese" name="topping" value="cheese">
+                <label for="cheese">Cheese</label>
+            </div>
+            <div>
+                <input type="checkbox" id="mushrooms" name="topping" value="mushrooms">
+                <label for="mushrooms">Mushrooms</label>
+            </div>
+            <div>
+                <input type="checkbox" id="bell_peppers" name="topping" value="bell_peppers">
+                <label for="bell_peppers">Bell Peppers</label>
+            </div>
+
+            <h3 style="margin: .5rem 0 .5rem 0">Single checkbox (True or False)</h3>
+            <div>
+                <input type="checkbox" id="newsletter" name="news_letter" checked>
+                <label for="newsletter">Send me the news letter</label>
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Contact Details</legend>
+          
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+          
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number">
+          
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          </fieldset>
+          
+          <fieldset>
+            <legend>Delivery Details</legend>
+          
+            <label for="street_address">Street Address:</label>
+            <input type="text" id="street_address" name="street_address">
+          
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+          
+            <label for="zip_code">Zip Code:</label>
+            <input type="text" id="zip_code" name="zip_code">
+          </fieldset>
+          
+          
+
+        <button type="submit" class="container" style="display: block;">submit</button>
     </form>
 </body>
 </html>
