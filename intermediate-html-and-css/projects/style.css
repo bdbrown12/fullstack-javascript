@@ -1,0 +1,190 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+  body {
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 5. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  /* 6. Inherit fonts for form controls */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /* 7. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /* 8. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  /*
+    9. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
+@font-face {
+    font-family: Norse-Bold;
+    src: url(/fonts/Norse-Bold.otf);
+}
+
+
+.container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f9fafb;
+}
+
+.container > div{
+    min-height: 100vh;
+}
+
+.image-container{
+    width: 35vw;
+    background: url('/images/background-image.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+img{
+    display: flex;
+    flex-shrink: 0;
+}
+
+.image-banner{
+    display: flex;
+    height: 40vh;
+    color: white;
+    justify-content: center;
+    align-items: end;
+}
+
+.semi-transparent{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-family: Norse-Bold;
+    width: 100%;
+    font-size: 2rem;
+    align-items: center;
+    background-color: rgb(0, 0, 0, .6);
+}
+
+.footer-image{
+    height: 60vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    width: 65vw;
+}
+
+.text-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33vh;
+    background-color: #f9fafb;
+    margin: 3rem;
+}
+
+.text-content p {
+    padding: 1rem;
+    margin-right: auto;
+}
+
+
+.form-content{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.23); 
+    box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.23);
+    background-color: white;
+}
+
+.form-content h1{
+    margin: 3rem
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.row1, .row2, .row3{
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+    margin-left: 3rem;
+}
+
+.vertical{
+    display: flex;
+    flex-direction: column;
+}
+
+div label, input{
+    padding: 0px;
+    width: 300px;
+}
+
+div input{
+    height: 2rem;
+}
+
+input:invalid{
+    border: solid red 2px;
+    border-radius: 5px;
+}
+
+input:focus{
+    border: solid blue 2px;
+}
+
+.btn{
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    width: 15vw;
+    cursor: pointer;
+    background-color: #596d48;
+    color: white;
+    margin-bottom: 2rem;
+    -webkit-box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.23); 
+    box-shadow: 5px 5px 6px 0px rgba(0,0,0,0.23);
+}
+
+.btn:hover{
+    background-color: rgba(89, 109, 72, .75);
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 3rem;
+}
+
+a:link{
+    color: #596d48;;
+}
