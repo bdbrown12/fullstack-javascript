@@ -153,13 +153,12 @@ div input{
     height: 2rem;
 }
 
-input:invalid{
-    border: solid red 2px;
-    border-radius: 5px;
-}
-
 input:focus{
     border: solid blue 2px;
+}
+
+input:valid{
+    border: solid green 2px;
 }
 
 .btn{
@@ -187,4 +186,8 @@ input:focus{
 
 a:link{
     color: #596d48;;
+}
+
+form.submitted input:invalid{
+    border: 2px solid red;
 }

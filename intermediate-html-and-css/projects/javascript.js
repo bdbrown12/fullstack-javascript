@@ -9,3 +9,8 @@ confirmPasword.addEventListener("input", () => {
     }
 });
 
+//
+document.getElementById("submitButton").addEventListener("click", () =>{
+    document.getElementById("testForm").className="submitted";
+});
+
