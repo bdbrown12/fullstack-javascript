@@ -161,6 +161,10 @@ input:valid{
     border: solid green 2px;
 }
 
+form.submitted input:invalid{
+    border: 2px solid red;
+}
+
 .btn{
     border-radius: 10px;
     padding: 1rem 2rem;
@@ -188,6 +192,3 @@ a:link{
     color: #596d48;;
 }
 
-form.submitted input:invalid{
-    border: 2px solid red;
-}
