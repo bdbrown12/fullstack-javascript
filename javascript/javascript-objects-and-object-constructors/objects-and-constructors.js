@@ -1,43 +1,53 @@
-// function Book() {
+// constructor objects
+
+// this.title refers to the property of the Book and title refers to the parameter
+
+// function Book(title, author, pages, hasRead) {
+//     console.log(this);
 //     this.title = title;
-//     this.author = author;
+//     this.author = author; 
 //     this.pages = pages;
-//     this.readStatus = readStatus;
-//     return this.info = () => console.log(`${this.title} by ${this.author}, ${this.pages}, ${this.readStatus}`)
+//     this.hasRead = hasRead;
+
+//     this.info = function() {
+//         if (this.hasRead === false) {
+//             this.hasRead = 'not read yet';
+//         }
+//         else{
+//             this.hasRead = 'read';
+//         };
+//         return `${this.title} by ${this.author}, ${this.pages}, ${hasRead}`;
+//     }
+
+//     this.info();
 // }
 
-// const book1 = new Book();
+// const book1 = new Book('Harry Potter', "JK Rowling", 123, false);
 
-// console.log(book1);
+// prototypes
 
-function Person(name) {
-    this.name = name;
-}
+// all objects in javascript hava prototypes. Protype is another object that the original object inherits from
 
-Person.prototype.sayName = function () {
-    console.log(`Hello I'm ${this.name}!`)
-}
-
-function Player(name,marker) {
+function Player(name, marker){
     this.name = name;
     this.marker = marker;
+    this.sayHello = function (){
+        return `Hello ${this.name}`;
+    };
+
+    this.sayHello();
 }
 
-Player.prototype.getMarker = function() {
-    console.log(`My marker is ${this.marker}!`);
+// how to define a property or method on the prototype
+Player.prototype.sayHello = function () {
+    console.log("Hello, I'm a player!");
 }
 
-Object.getPrototypeOf(Player.prototype); //returns Object.prototype
+const player1 = new Player('Kaleb', 'X');
+const player2 = new Player('Emily', 'O');
 
-// Now make 'Player' objects inherit from 'Person'
-Object.setPrototypeOf(Player.prototype, Person.prototype);
-Object.getPrototypeOf(Player.prototype);
+player1.sayHello(); // logs
+player2.sayHello();
 
-const player1 = new Player('Steve', 'X');
-const player2 = new Player('John', 'O');
 
-player1.sayName();
-player2.sayName();
-
-player1.getMarker();
-player2.getMarker();
+Object.getPrototypeOf(Player) === player1.prototype; //returns true because
