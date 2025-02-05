@@ -31,7 +31,7 @@
 function Player(name, marker){
     this.name = name;
     this.marker = marker;
-    this.sayHello = function (){
+    this.sayHello = function sayName(){
         return `Hello ${this.name}`;
     };
 
@@ -51,3 +51,34 @@ player2.sayHello();
 
 
 Object.getPrototypeOf(Player) === player1.prototype; //returns true because
+
+// prototypal inheritance
+Object.getPrototypeOf(Player.prototype) === Object.prototype; //returns true
+
+
+// here we are able to use the valueOf method because Player.prototype inherts from Object.prototype
+player1.valueOf();
+
+player1.hasOwnProperty('valueOf'); // false
+Object.prototype.hasOwnProperty('valueOf');
+
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayName = function() {
+    console.log(`Hello I'm ${this.name}`);
+}
+
+Player.prototype.getMarker = function () {
+    console.log(`My marker is ${this.marker}`)
+}
+
+// make player objects inherit from person
+Object.getPrototypeOf(Player.prototype); //returns Object.prototype
+Object.setPrototypeOf(Player.prototype, Person.prototype);
+
+Object.getPrototypeOf(Player.prototype) //returns Person.prototype
+
+const person1 = new Person('John');
+
