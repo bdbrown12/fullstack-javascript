@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js"></script>
 </head>
 <body>
-        <div class="header-container">
+        <div class="container">
             <div class="navbar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96L0 416c0 53 43 96 96 96l288 0 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64c17.7 0 32-14.3 32-32l0-320c0-17.7-14.3-32-32-32L384 0 96 0zm0 384l256 0 0 64L96 448c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16l192 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16zm16 48l192 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
                 <nav>
@@ -21,43 +24,43 @@
             </div>
         </div>
 
-        <h1 class="title">Add Book</h1>
-
-        <!--make a form to submit a new book-->
-        <form action="#">
-            <div class="add-book-container">
-                <div>
-                    <label for="bookName">Book</label>
-                    <input type="text" name="bookName">
+        <div class="main-container">
+            <h1 class="title">Add Book</h1>
+            <!--make a form to submit a new book-->
+            <form action="#">
+                <div class="add-book-container">
+                    <div>
+                        <label for="bookName">Book</label>
+                        <input type="text" name="bookName">
+                    </div>
+                    <div>
+                        <label for="bookName">Author</label>
+                        <input type="text" name="bookName">
+                    </div>
+                    <div>
+                        <label for="bookName">Pages</label>
+                        <input type="text" name="bookName">
+                    </div>
                 </div>
-                <div>
-                    <label for="bookName">Author</label>
-                    <input type="text" name="bookName">
-                </div>
-                <div>
-                    <label for="bookName">Pages</label>
-                    <input type="text" name="bookName">
-                </div>
-            </div>
-            <button>Add</button>
-        </form>
-
-        <h1 class="title">Stored Books</h1>
-
-        <!--display stored books here-->
-
-        <table style="width: 100%;">
-                <tr>
-                    <th>Name</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                </tr>
-                <tr>
-                    <td id="name"></td>
-                    <td id="author"></td>
-                    <td id="pages"></td>
-                </tr>
-        </table>
+                <div class="button-container"><button>Add</button></div>
+            </form>
+            <h1 class="title">Stored Books</h1>
+            <!--display stored books here-->
+            <table style="width: 100%;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td id="name">Harry Potter</td>
+                        <td id="author">J.K Rowling</td>
+                        <td id="pages">500</td>
+                        <td><button type="submit">Read</button></td>
+                    </tr>
+            </table>
+        </div>
 
 
 </body>

@@ -6,7 +6,8 @@
   /* 2. Remove default margin */
   * {
     margin: 0;
-
+    font-family: "Merriweather", serif;
+    color: white;
   }
   
   body {
@@ -14,6 +15,7 @@
     line-height: 1.5;
     /* 4. Improve text rendering */
     -webkit-font-smoothing: antialiased;
+    background-color: #464F51;                                        
   }
   
   /* 5. Improve media defaults */
@@ -47,28 +49,41 @@
     isolation: isolate;
   }
 
-.header-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 80%;
-    margin: auto;
+.container{
+    background-color: #8FC0A9;
+    font-size: 1.2rem;
+    font-family: "Merriweather Sans", sans-serif;
+    height: 70px;
 }
 
-
-.header-container * {
-    display: flex;
-    justify-content: right;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 80%;
+  margin: auto;
 }
 
-ul{
-    padding: 0;
+.navbar ul {
+  display: flex;
+}
+
+.container .navbar{
+  justify-content: space-between;
+}
+
+.navbar ul li {
+  list-style-type: none;
+}
+
+.container .navbar ul li {
+  padding: 10px;
+  margin: 0 10px;
 }
 
 svg{
     height: 70px;
-
 }
 
 svg:hover{
@@ -83,8 +98,82 @@ svg:hover{
 
 .add-book-container{
   display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.add-book-container div{
+  flex: 1 1 100%;
+}
+
+.add-book-container label {
+  display: block; /* Make labels block elements to stack above inputs */
+  margin-bottom: 0.5rem; /* Add some space between label and input */
+}
+
+.add-book-container input {
+  width: 100%; /* Make inputs take full width of their container */
+  padding: 0.5rem; /* Add padding for better touch targets */
+  box-sizing: border-box; /* Ensure padding doesn't add to the width */
 }
 
 table{
   border: solid black 2px;
+}
+button{
+  background-color: rgb(10, 155, 245);
+  padding: .5rem 1.5rem;
+  padding: 0.5rem 1rem; /* Add padding for better clickability */
+  border-radius: 5px; /* Add rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  font-weight: bold; /* Make text bold */
+  color: white; /* Ensure text color contrasts with the background */
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: rgba(10, 155, 245, .7);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active{
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2)
+}
+
+form{
+  background-color: #8FC0A9;
+  padding: 1rem 0 1rem 0;
+  border-radius: 10px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+h1{
+  margin: 1rem 0 1rem 0;
+}
+
+table{
+  background-color: #8FC0A9;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.main-container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  max-width: 1200px;
 }
