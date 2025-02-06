@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
 </head>
 <body>
         <div class="container">
@@ -27,38 +27,43 @@
         <div class="main-container">
             <h1 class="title">Add Book</h1>
             <!--make a form to submit a new book-->
-            <form action="#">
+            <form id="form-add-book">
                 <div class="add-book-container">
                     <div>
                         <label for="bookName">Book</label>
-                        <input type="text" name="bookName">
+                        <input type="text" name="bookName" id="input-book">
                     </div>
                     <div>
-                        <label for="bookName">Author</label>
-                        <input type="text" name="bookName">
+                        <label for="author">Author</label>
+                        <input type="text" name="author" id="input-author">
                     </div>
                     <div>
-                        <label for="bookName">Pages</label>
-                        <input type="text" name="bookName">
+                        <label for="pages">Pages</label>
+                        <input type="text" name="pages" id="input-pages">
                     </div>
+                    <div id="validation-msg" style="color: red; text-align: center; margin: 0;" ></div>
                 </div>
                 <div class="button-container"><button>Add</button></div>
             </form>
             <h1 class="title">Stored Books</h1>
             <!--display stored books here-->
             <table style="width: 100%;">
-                    <tr>
-                        <th>Name</th>
-                        <th>Author</th>
-                        <th>Pages</th>
-                        <th>Status</th>
-                    </tr>
-                    <tr>
-                        <td id="name">Harry Potter</td>
-                        <td id="author">J.K Rowling</td>
-                        <td id="pages">500</td>
-                        <td><button type="submit">Read</button></td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Author</th>
+                            <th>Pages</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="book-list">
+                        <tr>
+                            <td id="name">Harry Potter</td>
+                            <td id="author">J.K Rowling</td>
+                            <td id="pages">500</td>
+                            <td><button type="submit" onclick="toggleBookStatus(this)" id="btn-read">Read</button></td>
+                        </tr>
+                    </tbody>
             </table>
         </div>
 
