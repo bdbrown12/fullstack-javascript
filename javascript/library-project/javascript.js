@@ -4,11 +4,24 @@ let inputAuthor = document.getElementById("input-author");
 let inputPages = document.getElementById("input-pages");
 let validationMsg = document.getElementById("validation-msg");
 
+const modal = document.querySelector("#modal");
+const openModal = document.querySelector(".open-modal");
+const closeModalBtn = document.querySelector(".close-modal-btn");
+
 function renderBooks() {
     myLibrary.forEach((book, index))
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    openModal.addEventListener('click', () => {
+        validationMsg.innerHTML = "";
+        modal.showModal();
+    })
+    
+    closeModalBtn.addEventListener("click", () => {
+        modal.close();
+    });
+
     formAddBook.addEventListener("submit", (e) => {
         e.preventDefault();
         console.log('success!');
@@ -47,6 +60,8 @@ let validateForm = () => {
 
         //Update the UI to reflect the new book list
         addBookToLibrary(newBook);
+
+        modal.close();
     }
 };
 

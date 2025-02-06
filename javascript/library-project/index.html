@@ -25,26 +25,31 @@
         </div>
 
         <div class="main-container">
-            <h1 class="title">Add Book</h1>
+            <div style="display: flex; justify-content: center; margin-top: 1rem;"><button class="open-modal"><h1 class="title">Add Book</h1></button></div>
             <!--make a form to submit a new book-->
-            <form id="form-add-book">
-                <div class="add-book-container">
-                    <div>
-                        <label for="bookName">Book</label>
-                        <input type="text" name="bookName" id="input-book">
+            <dialog class="modal"  id="modal">
+                <form id="form-add-book">
+                    <div class="add-book-container">
+                        <div>
+                            <label for="bookName">Book</label>
+                            <input type="text" name="bookName" id="input-book">
+                        </div>
+                        <div>
+                            <label for="author">Author</label>
+                            <input type="text" name="author" id="input-author">
+                        </div>
+                        <div>
+                            <label for="pages">Pages</label>
+                            <input type="text" name="pages" id="input-pages">
+                        </div>
+                        <div id="validation-msg" style="color: red; text-align: center; margin: 0;" ></div>
                     </div>
-                    <div>
-                        <label for="author">Author</label>
-                        <input type="text" name="author" id="input-author">
+                    <div class="button-container">
+                        <button>Add</button>
+                        <button class="close-modal-btn" style="background-color: red; gap: 1rem; margin-left: 2rem;">Close</button>
                     </div>
-                    <div>
-                        <label for="pages">Pages</label>
-                        <input type="text" name="pages" id="input-pages">
-                    </div>
-                    <div id="validation-msg" style="color: red; text-align: center; margin: 0;" ></div>
-                </div>
-                <div class="button-container"><button>Add</button></div>
-            </form>
+                </form>
+            </dialog>
             <h1 class="title">Stored Books</h1>
             <!--display stored books here-->
             <table style="width: 100%;">
@@ -57,12 +62,7 @@
                         </tr>
                     </thead>
                     <tbody id="book-list">
-                        <tr>
-                            <td id="name"></td>
-                            <td id="author"></td>
-                            <td id="pages"></td>
-                            <td><button type="submit" onclick="toggleBookStatus(this)" id="btn-read"></button></td>
-                        </tr>
+
                     </tbody>
             </table>
         </div>
