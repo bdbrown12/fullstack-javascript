@@ -4,6 +4,10 @@ let inputAuthor = document.getElementById("input-author");
 let inputPages = document.getElementById("input-pages");
 let validationMsg = document.getElementById("validation-msg");
 
+function renderBooks() {
+    myLibrary.forEach((book, index))
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     formAddBook.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -49,33 +53,33 @@ let validateForm = () => {
 let addBookToLibrary = (book) => {
     //this needs to allow a book to change it's status property in Book.bookStatus
     //it also needs to change the innerHTML to Unread
-    let statusToString = (readStatus) => {
-        if (readStatus == "true"){
-            return "Read";
-        } else {
-            return "Unread";
-        }
-    }
     let bookList = document.getElementById("book-list");
     let row = document.createElement("tr");
     row.innerHTML = `
-    <tr>
         <td>${book.bookName}</td>
         <td>${book.authorName}</td>
         <td>${book.numPages}</td>
-        <td><button type="submit" onclick="toggleBookStatus(this)" id="btn-read">${statusToString(book.readStatus)}</button></td>
-    </tr>
+        <td>
+            <button type="submit" onclick="toggleBookStatus(this)" id="btn-read">${book.readStatus ? "Read" : "Unread"}
+            </button>
+        </td>
     `;
 
     bookList.appendChild(row);
 }
 
-let toggleBookStatus = (e) => {
+
+
+let toggleBookStatus = function(e) {
     e.innerHTML = 'Unread';
+    //how can i target the specific book that this is referencing?
+    console.log(this);
+
+    //method to update book status
 }
 
 // store all book objects in an array by creating a constructor for books
-const myLibrary = [];
+const myLibrary = [{ bookName: "Harry Potter", authorName: "J.K. Rowling", numPages: 500, readStatus: false },];
 
 function Book(bookName, authorName, numPages){
     this.bookName = bookName,
