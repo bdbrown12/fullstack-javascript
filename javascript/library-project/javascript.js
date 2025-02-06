@@ -46,15 +46,24 @@ let validateForm = () => {
     }
 };
 
-let addBookToLibrary = (newBook) => {
+let addBookToLibrary = (book) => {
+    //this needs to allow a book to change it's status property in Book.bookStatus
+    //it also needs to change the innerHTML to Unread
+    let statusToString = (readStatus) => {
+        if (readStatus == "true"){
+            return "Read";
+        } else {
+            return "Unread";
+        }
+    }
     let bookList = document.getElementById("book-list");
     let row = document.createElement("tr");
     row.innerHTML = `
     <tr>
-        <td>${newBook.bookName}</td>
-        <td>${newBook.authorName}</td>
-        <td>${newBook.numPages}</td>
-        <td><button type="submit">Read</button></td>
+        <td>${book.bookName}</td>
+        <td>${book.authorName}</td>
+        <td>${book.numPages}</td>
+        <td><button type="submit" onclick="toggleBookStatus(this)" id="btn-read">${statusToString(book.readStatus)}</button></td>
     </tr>
     `;
 
@@ -62,9 +71,7 @@ let addBookToLibrary = (newBook) => {
 }
 
 let toggleBookStatus = (e) => {
-    let btnRead = document.getElementById("btn-read");
-    btnRead.innerHTML = 'Unread';
-    console.log("Unread");
+    e.innerHTML = 'Unread';
 }
 
 // store all book objects in an array by creating a constructor for books
@@ -74,4 +81,5 @@ function Book(bookName, authorName, numPages){
     this.bookName = bookName,
     this.authorName = authorName,
     this.numPages = numPages
+    this.readStatus = false
 };
