@@ -121,6 +121,19 @@ svg:hover{
   box-sizing: border-box; /* Ensure padding doesn't add to the width */
 }
 
+input[type="text"], input[type="password"], textarea, select { 
+  outline: none;
+}
+
+input{
+  border-radius: 10px;
+  color: black;
+}
+
+input:focus{
+  border: red solid 2px;
+}
+
 table{
   border: solid black 2px;
 }
@@ -155,7 +168,6 @@ form{
 .button-container{
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
 }
 
 h1{
