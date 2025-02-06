@@ -83,7 +83,8 @@
 }
 
 svg{
-    height: 70px;
+    height: 60px;
+    flex-shrink: 0;
 }
 
 svg:hover{
