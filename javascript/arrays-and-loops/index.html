@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays & Loops</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+        // Create h1 element
+        const h1 = document.createElement("h1");
+        h1.innerHTML = "Looping an array";
+
+        // Insert h1 at the top of body
+        document.body.insertBefore(h1, document.body.firstChild);
+
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        let fruitLength = fruits.length;
+
+        let text = "<ul>";
+        for (let i = 0; i < fruitLength; i++) {
+            text += "<li>" + fruits[i] + "</li>";
+        }
+        text += "</ul>"; // Correct closing tag
+
+        document.querySelector("#demo").innerHTML = text;
+    </script>
+</body>
+</html>
