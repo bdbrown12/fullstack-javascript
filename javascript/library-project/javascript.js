@@ -63,7 +63,7 @@ let validateForm = () => {
         inputPages.value = "";
 
         //Update the UI to reflect the new book list
-        renderBooks();
+        addBookToLibrary(newBook, myLibrary.length - 1);
 
         modal.close();
     }
@@ -91,10 +91,10 @@ let addBookToLibrary = (book, index) => {
 
 
 let toggleBookStatus = function(e, index) {
-    myLibrary[index].readStatus = !myLibrary[index].readStatus; // Toggle the status
-    e.innerHTML = myLibrary[index].readStatus ? "Read" : "Unread"; // Update button text
+    myLibrary[index].readStatus = !myLibrary[index].readStatus;  // Toggle the status
+    e.innerHTML = myLibrary[index].readStatus ? "Read" : "Unread";  // Update button text
+};
 
-}
 
 // store all book objects in an array by creating a constructor for books
 const myLibrary = [{ bookName: "Harry Potter", authorName: "J.K. Rowling", numPages: 500, readStatus: false },];
