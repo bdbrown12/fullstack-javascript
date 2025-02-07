@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.close();
     });
 
+    // document.getElementById("book-list").addEventListener("click", function(e) {
+    //     if (e.target.closest())
+    // })
+
     formAddBook.addEventListener("submit", (e) => {
         e.preventDefault();
         console.log('success!');
@@ -85,7 +89,7 @@ let addBookToLibrary = (book, index) => {
             <button type="submit" onclick="toggleBookStatus(this, ${index})" id="btn-read">${book.readStatus ? "Read" : "Unread"}
             </button>
         </td>
-        <td><span onclick="removeBook(${index})"><i class="fa-solid fa-trash"></i></span></td>
+        <td><span class="open-delete-modal" onclick="removeBook(${index})"><i class="fa-solid fa-trash"></i></span></td>
     `;
 
     bookList.appendChild(row);
@@ -100,8 +104,19 @@ let toggleBookStatus = function(e, index) {
 
 
 let removeBook = function(index) {
+    //create the modal
+    const deleteModal = document.querySelector("#delete-modal");
+
+    //how do i target an element that i've created in the DOM? 
+    const openDeleteModal = document
+    //open the modal
+
+    //ppend a modal delete to the HTML
+    
+
     //how can i get a reference to the index of the array that contains this object?
     myLibrary.splice(index, 1)
+
     //remove an array with someArray.splice(x, 1);
     renderBooks();
 }
