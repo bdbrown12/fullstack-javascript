@@ -89,6 +89,7 @@
 svg{
     height: 60px;
     flex-shrink: 0;
+
 }
 
 svg:hover{
@@ -209,4 +210,5 @@ table, th, td {
 
 td span i:hover{
   cursor: pointer;
+  color: black;
 }
