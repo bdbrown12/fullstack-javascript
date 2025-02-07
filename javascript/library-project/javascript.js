@@ -9,10 +9,17 @@ const openModal = document.querySelector(".open-modal");
 const closeModalBtn = document.querySelector(".close-modal-btn");
 
 function renderBooks() {
-    myLibrary.forEach((book, index))
+    let bookList = document.getElementById("book-list");
+    bookList.innerHTML = "";
+
+    myLibrary.forEach((book, index) => {
+        addBookToLibrary(book, index);
+    })
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    renderBooks();
+
     openModal.addEventListener('click', () => {
         validationMsg.innerHTML = "";
         modal.showModal();
@@ -59,13 +66,13 @@ let validateForm = () => {
         inputPages.value = "";
 
         //Update the UI to reflect the new book list
-        addBookToLibrary(newBook);
+        addBookToLibrary(newBook, myLibrary.length - 1);
 
         modal.close();
     }
 };
 
-let addBookToLibrary = (book) => {
+let addBookToLibrary = (book, index) => {
     //this needs to allow a book to change it's status property in Book.bookStatus
     //it also needs to change the innerHTML to Unread
     let bookList = document.getElementById("book-list");
@@ -75,9 +82,10 @@ let addBookToLibrary = (book) => {
         <td>${book.authorName}</td>
         <td>${book.numPages}</td>
         <td>
-            <button type="submit" onclick="toggleBookStatus(this)" id="btn-read">${book.readStatus ? "Read" : "Unread"}
+            <button type="submit" onclick="toggleBookStatus(this, ${index})" id="btn-read">${book.readStatus ? "Read" : "Unread"}
             </button>
         </td>
+        <td><span onclick="removeBook(${index})"><i class="fa-solid fa-trash"></i></span></td>
     `;
 
     bookList.appendChild(row);
@@ -85,12 +93,17 @@ let addBookToLibrary = (book) => {
 
 
 
-let toggleBookStatus = function(e) {
-    e.innerHTML = 'Unread';
-    //how can i target the specific book that this is referencing?
-    console.log(this);
+let toggleBookStatus = function(e, index) {
+    myLibrary[index].readStatus = !myLibrary[index].readStatus;  // Toggle the status
+    e.innerHTML = myLibrary[index].readStatus ? "Read" : "Unread";  // Update button text
+};
 
-    //method to update book status
+
+let removeBook = function(index) {
+    //how can i get a reference to the index of the array that contains this object?
+    myLibrary.splice(index, 1)
+    //remove an array with someArray.splice(x, 1);
+    renderBooks();
 }
 
 // store all book objects in an array by creating a constructor for books
