@@ -9,6 +9,9 @@ const openModal = document.querySelector(".open-modal");
 const closeModalBtn = document.querySelector(".close-modal-btn");
 
 function renderBooks() {
+    let bookList = document.getElementById("book-list");
+    bookList.innerHTML = "";
+
     myLibrary.forEach((book, index) => {
         addBookToLibrary(book, index);
     })
@@ -82,7 +85,7 @@ let addBookToLibrary = (book, index) => {
             <button type="submit" onclick="toggleBookStatus(this, ${index})" id="btn-read">${book.readStatus ? "Read" : "Unread"}
             </button>
         </td>
-        <td><span><i class="fa-solid fa-trash"></i></span></td>
+        <td><span onclick="removeBook(${index})"><i class="fa-solid fa-trash"></i></span></td>
     `;
 
     bookList.appendChild(row);
@@ -95,6 +98,13 @@ let toggleBookStatus = function(e, index) {
     e.innerHTML = myLibrary[index].readStatus ? "Read" : "Unread";  // Update button text
 };
 
+
+let removeBook = function(index) {
+    //how can i get a reference to the index of the array that contains this object?
+    myLibrary.splice(index, 1)
+    //remove an array with someArray.splice(x, 1);
+    renderBooks();
+}
 
 // store all book objects in an array by creating a constructor for books
 const myLibrary = [{ bookName: "Harry Potter", authorName: "J.K. Rowling", numPages: 500, readStatus: false },];
