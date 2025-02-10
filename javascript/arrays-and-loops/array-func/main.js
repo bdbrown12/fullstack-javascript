@@ -47,6 +47,41 @@ const evenNum = numbers.filter((x) => {
 
 console.log(evenNum);
 
+// reduce - runs a function on each element in an array to reduce the array to a single value
+// most commonly used on numbers
+
+let sum = numbers.reduce((total, value) => {
+    return value += total;
+});
+
+console.log(sum);
+
+// some - iterates over a method to see if at least 1 elements meets the condition
+// if it does it returns true, if not it returns false
+
+let higherThanFive = numbers.some((element) => {
+    return element > 5;
+})
+
+console.log(higherThanFive);
+
+//search for a name given user input using the some iterator
+
+//ask the user for a name
+
+let name = ['John', 'Jacob', 'Kiki'];
+
+const userSearch = 'John';
+
+const found = name.some((name) => userSearch === name);
+
+if (found) // this function should check if userSearch is equal to name
+{
+    console.log(`${userSearch} found in db`);
+} else {
+    console.log(`${userSearch} not found in db`);
+}
+
 
 
 
