@@ -82,8 +82,11 @@ if (found) // this function should check if userSearch is equal to name
     console.log(`${userSearch} not found in db`);
 }
 
+// every - similar to the some method, however, every method needs to return true for it to return true
 
+let games = [{game: 'Game1', publishDate: 1996}, {game: 'Game2', publishDate: 1997}];
 
+const published1990 = games.every(game => game.publishDate >= 1990 && game.publishDate < 2000);
 
-
+console.log(published1990) //returns true because all games have a publishDate of 1990 or later
 
