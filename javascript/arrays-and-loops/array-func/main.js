@@ -90,3 +90,42 @@ const published1990 = games.every(game => game.publishDate >= 1990 && game.publi
 
 console.log(published1990) //returns true because all games have a publishDate of 1990 or later
 
+// find - iterates over an array to find a value. if it finds the value
+// it returns the value. if it doesn't it returns undefined
+
+let findFriend = friends.find((friend) => {
+    return friend === "Kaleb";
+});
+
+console.log(findFriend);
+
+//findIndex - returns the index position of the value instead of the value
+// returns -1 if the value cannot be found
+let findIndexFriend = friends.findIndex((index) => {
+    return index === "Kaleb";
+});
+
+console.log(findIndexFriend);
+
+//practice problems
+
+const moreFruits = ['apple', 'banana', 'orange']
+
+// loop through array using for each, alert each item including the index number
+moreFruits.forEach((fruit, index) => {
+    console.log(`Index: ${index} | Fruit: ${fruit}`)
+})
+
+// create a new array that takes the fruits and sets them all to uppercase
+
+let upperFruits = moreFruits.map((fruit) => {
+    return fruit.toUpperCase();
+})
+
+console.log(upperFruits);
+
+// check which fruit contains more than 3 letters - log the boolean result
+let moreThanThreeLetters = moreFruits.every(value => value.length > 3)
+
+console.log(moreThanThreeLetters);
+
