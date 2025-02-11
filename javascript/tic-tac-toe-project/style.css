@@ -98,6 +98,16 @@
     color: white;
   }
 
+  .modal{
+    all: revert;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--main-bg-color);
+    height: 50dvh;
+    opacity: 0;
+  }
+
   .grid-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -35,6 +35,47 @@
             <div class="cell" id="cell-9"></div>
         </div>
     </div>
+
+    <dialog class="modal" id="modal">
+        <h1>Enter user information</h1>
+        <form action="#">
+            <div>
+                <label for="playerName">Player Name: </label>
+                <input style="display: block;" type="text" id="playerName">
+            </div>
+            <div>
+                <p>Choose your marker</p>
+                <input type="radio" name="playerMarker" id="X">
+                <label for="playerMarker">X</label>
+                <input type="radio" name="playerMarker" id="O">
+                <label for="playerMarker">O</label>
+            </div>
+            <div class="button-container" style="position: absolute; bottom: 10px;">
+                <button>Submit</button>
+                <button id="btn-close-modal">Close</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script>
+        const modal = document.querySelector('#modal')
+        const openStart = document.querySelector("#btn-start");
+        const closeStart = document.querySelector("#btn-close-modal");
+
+        openStart.addEventListener('click', (e) => {
+            modal.showModal();
+            modal.style.opacity = 1;
+            modal.style.transition = '200ms';
+        });
+
+        closeStart.addEventListener('click', () => {
+            modal.style.opacity = 0;
+            setTimeout(() => {
+            modal.close();
+        }, 200); // Wait for 200ms before closing
+            
+        });
+    </script>
     
 </body>
 </html>
