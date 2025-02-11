@@ -39,14 +39,23 @@ const factoryUser = createUser("kaleb");
 // Destructing
 // When you have an object, you can extract a property of an object into a 
 // variable of the same name, or any named variable for an array.
-const obj = { a: 1, b: 2 }
-const { a, b } = obj;
+// const obj = { a: 1, b: 2 };
+// const { a, b } = obj;
+
+const array = [1,2,3,4,5];
+const [zerothEle, firstEle] = array;
 
 // Destructing the createUser function from above
 
 console.log(typeof factoryUser); //because this is an object we can extract properties
 const {name, discordName} = factoryUser; //by setting them equal
 console.log(`Name: ${name} has a type of: ${typeof name}`, `\nDiscord Name: ${discordName} has a type of: ${typeof discordName}`);
+
+const obj1 = {a: 1, b: {c:2}};
+const {
+    a,
+    b: {c:d},
+} = obj1;
 
 
 
