@@ -101,55 +101,129 @@
             
             //get the opposite of player marker and use that to create a new opponent
             const opponentMarker = selectedMarker.id === "X" ? "O" : "X";
-            const opponent = Player("opponent", getOpponentId());
-
-            console.log("New player created: ", newPlayer);
+            const opponent = Player("opponent", opponentMarker, undefined, false);
 
             // Close the modal after successful form submission
             modal.style.opacity = 0;
             modal.style.transition = 'opacity 200ms';  // Smooth transition
 
+            // Close Modal
             setTimeout(() => {
                 modal.close();  // Close the modal
                 modal.style.display = 'none';  // Ensure it doesn't occupy space
             }, 200);
 
-            runGame(newPlayer, opponent)
+            runGame(newPlayer, opponent);
 
         });
 
-        function runGame(player){
+        function runGame(player, opponent){
+            //possible need to destructure to access properties 
+
             //create the gameboard
             let gameboard = Array(9).fill(null);
 
+            function opponentTurn() {
+                let availableSpaces = [];
+
+                gameboard.forEach((cell, index) =>{
+                    if (cell === null || cell === ''){
+                        availableSpaces.push(index);
+                    }
+                });
+
+                    if (availableSpaces.length === 0) return 'Game over';
+
+                    let randomIndex = availableSpaces[Math.floor(Math.random() * availableSpaces.length)]
+
+                    //update gameboard and UI
+                    gameboard[randomIndex] = opponent.marker;
+                    cells[randomIndex].textContent = opponent.marker;
+
+                    //switch to players turn
+                
+            }
+
+            //call playerTurn() if gameboard is NOT full and game does NOT have winner
             
+            //call opponentTurn()
+
+                //if gameboard[index] is empty, opponent randomly places marker
+                cells.forEach((cell, index) => {
+                    let opponentSelection = 1; //some randomly generated number between 0 and 8
+
+                    //check if the opponents selection is valid
+
+                    //what makes their selection valid? 
+                        // (1) the generated number has to be available in the array && (2) gameboard[index] has to be empty or null
 
 
-            //only clear the marker if the cell is empty
+                            //how can I ensure that the generated number is available in the array?
+                                // only let the opponent see indexes that are NOT null or ''
+                                    //how do I only let the opponent see these array elements?
+                                        // get gameboard[index] WHERE index is not null or '' and store them in a variable i.e. opponentOptions[] (this needs to remain a reference)
+                                            //opponentOptions [] = 
 
-            cells.forEach((cell, index) =>{
-                //only show the marker if the cell is empty
-                cell.addEventListener('mouseenter', () => {
-                    if(!gameboard[index]){
-                        cell.style.cursor = "pointer";
+                                            //if (!gameboard[index])
+                                                //return array[index] //use this as computer options
+
+
+                                        // randomly select from an index in opponentOptions
+
+                        // 
+
+
+                    //if !gameboard[opponentSelection]
+                        // change marker in dom
+                            //cell.textContent = opponent.marker
+                        // update opponents selected index marker in array
+                            //how do i change an index marker in an array?
+                                //array[index] = opponent.marker
+                            //gameboard[index] = opponent.marker
+                    //else
+                });
+                //switch turns
+
+            //do i need to return the array after each turn or how do i keep it updated?
+
+
+            function playerTurn(){
+                //only clear the marker if the cell is empty
+                cells.forEach((cell, index) =>{
+                    //only show the marker if the cell is empty
+                    cell.addEventListener('mouseenter', () => {
+                        if(!gameboard[index]){
+                            cell.style.cursor = "pointer";
+                            cell.textContent = player.marker;
+                        }
+                    });
+
+                    cell.addEventListener('mouseleave', () => {
+                        if(!gameboard[index]){
+                            cell.textContent = "";
+                        }
+                    });
+
+                    cell.addEventListener('click', () => {
+                        if(!gameboard[index]){
                         cell.textContent = player.marker;
-                    }
-                });
+                        gameboard[index] = player.marker;
+                        cell.style.color = "black";
+                        //player turn ends
+                        player.isTurn = false;
 
-                cell.addEventListener('mouseleave', () => {
-                    if(!gameboard[index]){
-                        cell.textContent = "";
-                    }
+                        //opponent turn begins
+                        opponent.isTurn = true;
+                        console.log(opponent.isTurn);
+                        }
+                    });
                 });
+            }
 
-                cell.addEventListener('click', () => {
-                    if(!gameboard[index]){
-                    cell.textContent = player.marker;
-                    gameboard[index] = player.marker;
-                    cell.style.color = "black";
-                    }
-                });
-            });
+            //opponentTurn()
+
+
+
 
 
 
