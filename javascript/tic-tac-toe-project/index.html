@@ -109,21 +109,25 @@
                 modal.style.display = 'none';  // Ensure it doesn't occupy space
             }, 200);
 
-            //runGame()
+            runGame(newPlayer)
 
         });
 
-        cells.forEach(cell =>{
-            cell.addEventListener('mouseenter', () => {
-                cell.style.cursor = "pointer";
-                cell.textContent = "X";
-            });
+        function runGame(player){
+            cells.forEach(cell =>{
+                cell.addEventListener('mouseenter', () => {
+                    cell.style.cursor = "pointer";
+                    cell.textContent = player.marker;
+                });
 
-            cell.addEventListener('mouseleave', () => {
-                cell.style.cursor = "pointer";
-                cell.textContent = "";
+                cell.addEventListener('mouseleave', () => {
+                    cell.style.cursor = "pointer";
+                    cell.textContent = "";
+                });
             });
-        });
+        };
+
+
 
         btnReset.addEventListener('click', () => {
             window.location.reload();
