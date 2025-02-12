@@ -37,7 +37,7 @@
     </div>
 
     <dialog class="modal" id="modal">
-        <h1>Enter user information</h1>
+        <h1>Enter Player Information</h1>
         <form action="#">
             <div>
                 <label for="playerName">Player Name: </label>
@@ -61,8 +61,21 @@
         const modal = document.querySelector('#modal')
         const openStart = document.querySelector("#btn-start");
         const closeStart = document.querySelector("#btn-close-modal");
+        const cells = document.querySelectorAll(".cell");
 
-        openStart.addEventListener('click', (e) => {
+        cells.forEach(cell =>{
+            cell.addEventListener('mouseenter', () => {
+                cell.style.cursor = "pointer";
+                cell.textContent = "X";
+            });
+
+            cell.addEventListener('mouseleave', () => {
+                cell.style.cursor = "pointer";
+                cell.textContent = "";
+            });
+        });
+
+        openStart.addEventListener('click', () => {
             modal.showModal();
             modal.style.opacity = 1;
             modal.style.transition = '200ms';

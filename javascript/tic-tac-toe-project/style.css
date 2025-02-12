@@ -103,9 +103,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: var(--main-bg-color);
+    background-color: var(--card-color);
     height: 50dvh;
     opacity: 0;
+    position: relative;
   }
 
   .grid-container{
