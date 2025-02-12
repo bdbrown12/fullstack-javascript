@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
 
     <title>Tic Tac Toe</title>
 </head>
+
 <body>
     <header>
         <h1 class="press-start-2p-regular">Tic Tac Toe</h1>
@@ -58,6 +60,7 @@
     </dialog>
 
     <script>
+        //declare DOM variables
         const modal = document.querySelector('#modal')
         const openStart = document.querySelector("#btn-start");
         const closeStart = document.querySelector("#btn-close-modal");
@@ -73,22 +76,22 @@
 
             //remove existing validation messages if any
             const existingMsg = document.querySelector(".validation-message");
-            if (existingMsg){
+            if (existingMsg) {
                 existingMsg.remove();
             }
 
             //check if name is valid
-            if(inputName.value.trim() === ""){
-               const validationMsg = document.createElement("div")
-               validationMsg.innerHTML = "Please enter a name.";
-               validationMsg.classList.add("validation-message");
- 
-               inputName.insertAdjacentElement("afterend", validationMsg);
-               return; //Stop execution if validation fails
-            } 
+            if (inputName.value.trim() === "") {
+                const validationMsg = document.createElement("div")
+                validationMsg.innerHTML = "Please enter a name.";
+                validationMsg.classList.add("validation-message");
+
+                inputName.insertAdjacentElement("afterend", validationMsg);
+                return; //Stop execution if validation fails
+            }
 
             //check if radio button is selected
-            if(!selectedMarker){
+            if (!selectedMarker) {
                 const validationMsg = document.createElement("div");
                 validationMsg.innerHTML = "Please select a marker";
                 validationMsg.classList.add("validation-message");
@@ -98,7 +101,7 @@
 
             //create a new player
             const newPlayer = Player(inputName.value.trim(), selectedMarker.id);
-            
+
             //get the opposite of player marker and use that to create a new opponent
             const opponentMarker = selectedMarker.id === "X" ? "O" : "X";
             const opponent = Player("opponent", opponentMarker, undefined, false);
@@ -117,118 +120,88 @@
 
         });
 
-        function runGame(player, opponent){
+        function runGame(player, opponent) {
             //possible need to destructure to access properties 
 
             //create the gameboard
             let gameboard = Array(9).fill(null);
 
+            function playerTurn(index) {
+                // Check if the cell is empty
+                if (gameboard[index] !== null) return;
+
+                // Update the gameboard and UI
+                gameboard[index] = player.marker;
+                cells[index].textContent = player.marker;
+
+                //check for winner ***
+
+
+                //switch turns
+                player.isTurn = false;
+                opponent.isTurn = true;
+
+                // Call opponent's turn after a short delay
+                setTimeout(() => opponentTurn(), 500);
+
+            }
+
             function opponentTurn() {
                 let availableSpaces = [];
 
-                gameboard.forEach((cell, index) =>{
-                    if (cell === null || cell === ''){
+                gameboard.forEach((cell, index) => {
+                    if (cell === null || cell === '') {
                         availableSpaces.push(index);
                     }
                 });
 
-                    if (availableSpaces.length === 0) return 'Game over';
+                if (availableSpaces.length === 0) return 'Game over';
 
-                    let randomIndex = availableSpaces[Math.floor(Math.random() * availableSpaces.length)]
+                let randomIndex = availableSpaces[Math.floor(Math.random() * availableSpaces.length)]
 
-                    //update gameboard and UI
-                    gameboard[randomIndex] = opponent.marker;
-                    cells[randomIndex].textContent = opponent.marker;
+                //update gameboard and UI
+                gameboard[randomIndex] = opponent.marker;
+                cells[randomIndex].textContent = opponent.marker;
 
-                    //switch to players turn
-                
+                //check for winner ***
+
+                //switch to players turn
+                opponent.isTurn = false;
+                player.isTurn = true;
             }
 
-            //call playerTurn() if gameboard is NOT full and game does NOT have winner
-            
-            //call opponentTurn()
+            function checkWinner() {
 
-                //if gameboard[index] is empty, opponent randomly places marker
-                cells.forEach((cell, index) => {
-                    let opponentSelection = 1; //some randomly generated number between 0 and 8
+            }
 
-                    //check if the opponents selection is valid
-
-                    //what makes their selection valid? 
-                        // (1) the generated number has to be available in the array && (2) gameboard[index] has to be empty or null
-
-
-                            //how can I ensure that the generated number is available in the array?
-                                // only let the opponent see indexes that are NOT null or ''
-                                    //how do I only let the opponent see these array elements?
-                                        // get gameboard[index] WHERE index is not null or '' and store them in a variable i.e. opponentOptions[] (this needs to remain a reference)
-                                            //opponentOptions [] = 
-
-                                            //if (!gameboard[index])
-                                                //return array[index] //use this as computer options
-
-
-                                        // randomly select from an index in opponentOptions
-
-                        // 
-
-
-                    //if !gameboard[opponentSelection]
-                        // change marker in dom
-                            //cell.textContent = opponent.marker
-                        // update opponents selected index marker in array
-                            //how do i change an index marker in an array?
-                                //array[index] = opponent.marker
-                            //gameboard[index] = opponent.marker
-                    //else
-                });
-                //switch turns
-
-            //do i need to return the array after each turn or how do i keep it updated?
-
-
-            function playerTurn(){
-                //only clear the marker if the cell is empty
-                cells.forEach((cell, index) =>{
-                    //only show the marker if the cell is empty
-                    cell.addEventListener('mouseenter', () => {
-                        if(!gameboard[index]){
-                            cell.style.cursor = "pointer";
-                            cell.textContent = player.marker;
-                        }
-                    });
-
-                    cell.addEventListener('mouseleave', () => {
-                        if(!gameboard[index]){
-                            cell.textContent = "";
-                        }
-                    });
-
-                    cell.addEventListener('click', () => {
-                        if(!gameboard[index]){
+            cells.forEach((cell, index) => {
+                //show the players marker if they hover over an available space
+                cell.addEventListener('mouseenter', () => {
+                    if (!gameboard[index] && player.isTurn) {
+                        cell.style.cursor = "pointer";
                         cell.textContent = player.marker;
-                        gameboard[index] = player.marker;
-                        cell.style.color = "black";
-                        //player turn ends
-                        player.isTurn = false;
-
-                        //opponent turn begins
-                        opponent.isTurn = true;
-                        console.log(opponent.isTurn);
-                        }
-                    });
+                    }
                 });
+                //remove player marker when their mouse exits the cell
+                cell.addEventListener('mouseleave', () => {
+                    if (!gameboard[index]) {
+                        cell.textContent = "";
+                    }
+                });
+
+                // Click functionality for the player's turn
+                cell.addEventListener("click", () => {
+                    if (player.isTurn && gameboard[index] === null) {
+                        playerTurn(index); // Call player turn
+                    }
+                });
+            });
+
+            // Initial call to the player turn (if the player starts)
+            if (player.isTurn) {
+                playerTurn(); // Ensure the player starts
             }
-
-            //opponentTurn()
-
-
-
-
-
-
         }
-
 
 
         btnReset.addEventListener('click', () => {
@@ -244,14 +217,16 @@
         closeStart.addEventListener('click', () => {
             modal.style.opacity = 0;
             setTimeout(() => {
-            modal.close();
-        }, 200); // Wait for 200ms before closing
+                modal.close();
+            }, 200); // Wait for 200ms before closing
         });
 
+        //player constructor
         function Player(name, marker, score) {
-        return {name, marker, score: 0, isTurn: true};
+            return { name, marker, score: 0, isTurn: true };
         }
+
     </script>
-    
 </body>
+
 </html>
