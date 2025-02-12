@@ -63,6 +63,7 @@
         const closeStart = document.querySelector("#btn-close-modal");
         const cells = document.querySelectorAll(".cell");
         const playerForm = document.querySelector("#player-form");
+        const btnReset = document.querySelector("#btn-reset");
 
         playerForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -108,6 +109,8 @@
                 modal.style.display = 'none';  // Ensure it doesn't occupy space
             }, 200);
 
+            //runGame()
+
         });
 
         cells.forEach(cell =>{
@@ -120,6 +123,10 @@
                 cell.style.cursor = "pointer";
                 cell.textContent = "";
             });
+        });
+
+        btnReset.addEventListener('click', () => {
+            window.location.reload();
         });
 
         openStart.addEventListener('click', () => {
