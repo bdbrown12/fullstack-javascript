@@ -96,7 +96,12 @@
                 return;
             }
 
+            //create a new player
             const newPlayer = Player(inputName.value.trim(), selectedMarker.id);
+            
+            //get the opposite of player marker and use that to create a new opponent
+            const opponentMarker = selectedMarker.id === "X" ? "O" : "X";
+            const opponent = Player("opponent", getOpponentId());
 
             console.log("New player created: ", newPlayer);
 
@@ -109,23 +114,46 @@
                 modal.style.display = 'none';  // Ensure it doesn't occupy space
             }, 200);
 
-            runGame(newPlayer)
+            runGame(newPlayer, opponent)
 
         });
 
         function runGame(player){
-            cells.forEach(cell =>{
+            //create the gameboard
+            let gameboard = Array(9).fill(null);
+
+            
+
+
+            //only clear the marker if the cell is empty
+
+            cells.forEach((cell, index) =>{
+                //only show the marker if the cell is empty
                 cell.addEventListener('mouseenter', () => {
-                    cell.style.cursor = "pointer";
-                    cell.textContent = player.marker;
+                    if(!gameboard[index]){
+                        cell.style.cursor = "pointer";
+                        cell.textContent = player.marker;
+                    }
                 });
 
                 cell.addEventListener('mouseleave', () => {
-                    cell.style.cursor = "pointer";
-                    cell.textContent = "";
+                    if(!gameboard[index]){
+                        cell.textContent = "";
+                    }
+                });
+
+                cell.addEventListener('click', () => {
+                    if(!gameboard[index]){
+                    cell.textContent = player.marker;
+                    gameboard[index] = player.marker;
+                    cell.style.color = "black";
+                    }
                 });
             });
-        };
+
+
+
+        }
 
 
 
