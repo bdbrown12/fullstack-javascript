@@ -1,61 +1,83 @@
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-  }
-  
-  /* 2. Remove default margin */
-  * {
+}
+
+/* 2. Remove default margin */
+* {
     margin: 0;
-  }
-  
-  body {
+}
+
+body {
     /* 3. Add accessible line-height */
     line-height: 1.5;
     /* 4. Improve text rendering */
     -webkit-font-smoothing: antialiased;
     background-color: var(--main-bg-color)
-  }
-  
-  /* 5. Improve media defaults */
-  img, picture, video, canvas, svg {
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
     display: block;
     max-width: 100%;
-  }
-  
-  /* 6. Inherit fonts for form controls */
-  input, button, textarea, select {
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
     font: inherit;
-  }
-  
-  /* 7. Avoid text overflows */
-  p, h1, h2, h3, h4, h5, h6 {
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     overflow-wrap: break-word;
-  }
-  
-  /* 8. Improve line wrapping */
-  p {
+}
+
+/* 8. Improve line wrapping */
+p {
     text-wrap: pretty;
-  }
-  h1, h2, h3, h4, h5, h6 {
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     text-wrap: balance;
-  }
-  
-  /*
+}
+
+/*
     9. Create a root stacking context
   */
-  #root, #__next {
+#root,
+#__next {
     isolation: isolate;
-  }
+}
 
-  :root{
+:root {
     --main-bg-color: #264653;
     --card-color: #2A9D8F;
     --yellow: #E9C46A;
     --orange: #F4A261;
     --red: #E76F51;
-  }
+}
 
-  header h1 {
+header h1 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 1rem;
@@ -67,38 +89,38 @@
     background-color: var(--card-color);
     border-radius: 10px;
     color: white;
-  }
+}
 
-  .button-container{
+.button-container {
     font-family: "Press Start 2P", serif;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
     gap: 1rem;
-  }
+}
 
-  .button-container > * {
+.button-container>* {
     cursor: pointer;
-  }
+}
 
-  #btn-start{
+#btn-start {
     background-color: var(--red);
-  }
+}
 
-  #btn-start:hover{
+#btn-start:hover {
     color: white;
-  }
+}
 
-  #btn-reset{
-    background-color: var(--yellow); 
-  }
+#btn-reset {
+    background-color: var(--yellow);
+}
 
-  #btn-reset:hover{
+#btn-reset:hover {
     color: white;
-  }
+}
 
-  .modal{
+.modal {
     all: revert;
     display: flex;
     align-items: center;
@@ -107,9 +129,9 @@
     height: 50dvh;
     opacity: 0;
     position: relative;
-  }
+}
 
-  .grid-container{
+.grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -124,14 +146,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .grid {
+.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 10px; /* Adds spacing between cells */
-    width: 90%; /* Slightly smaller to show background */
+    gap: 10px;
+    /* Adds spacing between cells */
+    width: 90%;
+    /* Slightly smaller to show background */
     height: 90%;
 }
 
@@ -144,27 +168,39 @@
     background-color: var(--yellow);
     border: 3px solid var(--orange);
     cursor: pointer;
-    border-radius: 5px; /* Slightly rounded corners for better aesthetics */
+    border-radius: 5px;
+    /* Slightly rounded corners for better aesthetics */
     width: 100%;
     height: 100%;
 }
 
-  .cell:hover {
+.cell:hover {
     background-color: var(--red);
     color: white;
 }
 
-  /*Imported Font*/
+/*Imported Font*/
 
-  .press-start-2p-regular {
+.press-start-2p-regular {
     font-family: "Press Start 2P", serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  .validation-message {
+.validation-message {
     color: var(--yellow);
     font-size: 0.9rem;
     margin-top: 5px;
 }
-  
+
+#btn-submit-player {
+    background-color: var(--red);
+}
+
+#btn-close-modal {
+    background-color: var(--yellow);
+}
+
+.h1-font{
+    font-family: "Press Start 2P", serif;
+}

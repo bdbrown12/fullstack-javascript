@@ -26,19 +26,19 @@
 
     <div class="grid-container">
         <div class="grid">
-            <div class="cell" id="cell-1"></div>
-            <div class="cell" id="cell-2"></div>
-            <div class="cell" id="cell-3"></div>
-            <div class="cell" id="cell-4"></div>
-            <div class="cell" id="cell-5"></div>
-            <div class="cell" id="cell-6"></div>
-            <div class="cell" id="cell-7"></div>
-            <div class="cell" id="cell-8"></div>
-            <div class="cell" id="cell-9"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
         </div>
     </div>
 
-    <dialog class="modal" id="modal">
+    <dialog class="modal" id="modal" style="position: relative;">
         <h1>Enter Player Information</h1>
         <form id="player-form">
             <div>
@@ -48,15 +48,17 @@
             <div>
                 <p>Choose your marker</p>
                 <input type="radio" name="playerMarker" id="X">
-                <label for="playerMarker">X</label>
+                <label for="X">X</label>
                 <input type="radio" name="playerMarker" id="O">
-                <label for="playerMarker">O</label>
-            </div>
-            <div class="button-container" style="position: absolute; bottom: 10px;">
-                <button id="btn-submit-player">Submit</button>
-                <button id="btn-close-modal">Close</button>
+                <label for="O">O</label>
             </div>
         </form>
+
+        <div class="button-container" style="position: absolute; bottom: 10px;">
+            <button id="btn-submit-player">Submit</button>
+            <button id="btn-close-modal">Close</button>
+        </div>
+
     </dialog>
 
     <script>
@@ -67,6 +69,16 @@
         const cells = document.querySelectorAll(".cell");
         const playerForm = document.querySelector("#player-form");
         const btnReset = document.querySelector("#btn-reset");
+        const submitButton = document.querySelector("#btn-submit-player");
+
+        let gameboard; // Declare gameboard outside so it's accessible for both resetting and running the game
+        let gameStarted = false; // A flag to track if the game has started
+
+        // Ensure submit button outside the form manually triggers form submission
+        submitButton.addEventListener("click", (e) => {
+            e.preventDefault();  // Prevent default button behavior
+            playerForm.requestSubmit();  // Manually trigger form submission
+        });
 
         playerForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -104,7 +116,7 @@
 
             //get the opposite of player marker and use that to create a new opponent
             const opponentMarker = selectedMarker.id === "X" ? "O" : "X";
-            const opponent = Player("opponent", opponentMarker, undefined, false);
+            const opponent = Player("Opponent", opponentMarker, undefined, false);
 
             // Close the modal after successful form submission
             modal.style.opacity = 0;
@@ -121,10 +133,10 @@
         });
 
         function runGame(player, opponent) {
-            //possible need to destructure to access properties 
-
             //create the gameboard
-            let gameboard = Array(9).fill(null);
+            gameboard = Array(9).fill(null);
+            //mark the game as started
+            gameStarted = true;
 
             function playerTurn(index) {
                 // Check if the cell is empty
@@ -135,7 +147,10 @@
                 cells[index].textContent = player.marker;
 
                 //check for winner ***
-
+                if (checkWinner(player.marker)) {
+                    alert(`${player.name} wins!`);
+                    return;
+                }
 
                 //switch turns
                 player.isTurn = false;
@@ -163,15 +178,29 @@
                 gameboard[randomIndex] = opponent.marker;
                 cells[randomIndex].textContent = opponent.marker;
 
-                //check for winner ***
+                //check for winner 
+                if (checkWinner(opponent.marker)) {
+                    setTimeout(() => {
+                        alert(`${opponent.name} wins!`);
+                    }, 100);
+                    return;
+                }
 
                 //switch to players turn
                 opponent.isTurn = false;
                 player.isTurn = true;
             }
 
-            function checkWinner() {
+            function checkWinner(marker) {
+                const winningCombinations = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8], //Rows
+                    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                    [0, 4, 8], [2, 4, 6] // Diagonals
+                ];
 
+                return winningCombinations.some(combination =>
+                    combination.every(index => gameboard[index] === marker)
+                );
             }
 
             cells.forEach((cell, index) => {
@@ -201,12 +230,34 @@
             if (player.isTurn) {
                 playerTurn(); // Ensure the player starts
             }
+
+
         }
 
+        // button to reset the game
 
+        //if player exists (i.e game is running)
+        //reset board
+        //else
+        //reload page
+
+        //declare one variable in runGame and one global
         btnReset.addEventListener('click', () => {
-            window.location.reload();
+            if (!gameStarted) {
+                // If the game hasn't started, reload the page
+                window.location.reload();
+            } else {
+                // If the game has started, reset the gameboard and update the grid
+                gameboard = Array(9).fill(null);
+                cells.forEach(cell => {
+                    cell.textContent = '';
+                    cell.style.color = '';
+                });
+            }
         });
+
+
+
 
         openStart.addEventListener('click', () => {
             modal.showModal();
