@@ -57,6 +57,30 @@ const {
     b: {c:d},
 } = obj1;
 
+const newName = "Maynard";
+const color = "red";
+const number = 34;
+const food = "rice";
+
+console.log({name, color, number, food});
+
+const counterCreator = () => {
+    let count = 0;
+    return () => {
+        console.log(count);
+        count++;
+    };
+};
+
+const counter = counterCreator();
+
+counter();
+counter();
+counter();
+counter();
+
+
+
 
 
 
