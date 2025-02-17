@@ -12,6 +12,8 @@ class Player {
     }
 }
 
+//extend to different character archetypes
+
 class Warrior extends Player {
     constructor(name, health, armor){
         super(name, health);
@@ -35,6 +37,5 @@ class Enemy extends Player {
     }
 }
 
-
-
-//extend to different character archetypes
+const hero = new Warrior("Thor", 100, 10);
+hero.takeDamage(30); // Damage is reduced by armor
