@@ -14,3 +14,15 @@ class User {
 // Usage:
 let user = new User("John");
 user.sayHi();
+
+// Class fields
+
+class Person {
+    name = "John";
+
+    sayHi() {
+        alert(`Hello ${this.name}!`);
+    }
+}
+
+new Person().sayHi();
