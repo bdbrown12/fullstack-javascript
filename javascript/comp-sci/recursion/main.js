@@ -94,3 +94,53 @@ function collatz(n) {
 }
 
 console.log(`Co: ${collatz(50)}`);
+
+function sumRange(n){
+    //base case
+    if (n === 0) {
+        return 0;
+    }
+    //recursive call
+    else {
+        return n + sumRange(n-1);
+    }
+
+
+
+    //returns the sum of all numbers from 1 up to the number passed in
+}
+
+console.log(sumRange(3));
+
+function power(base, ex) {
+    if (ex === 0) {
+        return 1;
+    }
+    else { return base * power(base, ex - 1); }
+    
+}
+
+console.log(power(2,4));
+
+function fact(n) {
+    //base case
+    if (n === 1 || n === 0) {
+        return 1;
+    }
+    
+    return n * fact(n-1)
+}
+
+console.log(fact(5));
+
+function all(arr, callback) {
+    //return strue if every value in the array returns true when passed as a parameter to the callback function
+
+    //what is the base case (terminating scenerio)?
+    if (arr) {
+        return 
+    }
+    callback = function() {
+
+    }
+}
