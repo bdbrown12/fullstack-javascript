@@ -41,7 +41,17 @@ function mergeSort(arr) {
     // how do i get the right half?
     const right = arr.slice(mid)
 
+    return merge(left, right)
+
             // if leftarr[]
 
             //return mergeSort()
+
+    function merge() {
+        const result = [];
+
+        while (left.length && right.length) {
+            
+        }
+    }
 }
