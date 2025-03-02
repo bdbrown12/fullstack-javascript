@@ -62,3 +62,28 @@ function sortArr(arr) {
 }
 
 
+
+function twoSumPointer(arr, target) 
+{
+
+    
+
+    let left = 0, right = arr.length - 1;
+
+    while (left < right) {
+        let sum = arr[left] + arr[right];
+
+        //check if the sum matches the target
+        if (sum === target) return true;
+        // move the left pointer to the right
+        else if (sum < target) left++;
+        // move the right pointer to the left
+        else right--;
+    }
+
+    // If no pair is found
+    return false;
+
+}
+
+
