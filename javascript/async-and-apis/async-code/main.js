@@ -19,6 +19,32 @@ fruits.forEach(callback);
 console.log("Done");
 
 // ***callbacks are just a way to store things to do at a later time***
+function orderPizza(callback){
+    setTimeout(() => {
+        const pizza = `pizza`
+        callback(pizza)
+    }, 2000)
+}
+
+function pizzaReady(pizza){
+    console.log(`Eat the ${pizza}`)
+}
+
+orderPizza(pizzaReady);
+
+function toggleDropdown(callback) {
+    console.log('Dropdown opened')
+    const dropStatus = true;
+    callback(dropStatus);  
+};
+
+function selectCity(dropStatus, callback) {
+    console.log(`City selected. Drop status is ${dropStatus}.`);
+    callback();
+};
+
+toggleDropdown(selectCity);
+
 
 // PROMISES
 
