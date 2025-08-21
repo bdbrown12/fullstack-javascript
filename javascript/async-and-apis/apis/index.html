@@ -5,17 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+    img{
+        text-align: center;
+    }
+</style>
+
 <body>
-    <img src="#" alt="A gif">
+    <h1>Search for an image</h1>
+    <input type="text" id="userInput" placeholder="Type something...">
+    <button id="searchBtn">Submit</button>
+    <div>
+        <img id="gif" src="" alt="Your GIF will appear here"></div>
+    </div>
+
     <script>
-        const img = document.querySelector('img');
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=[INSERT_API_KEY_HERE]', {mode: 'cors'}) //fetch our api call and set the correct mode
-            .then(function(response) { // the response parameter here is automattically passed when a fetch request is successful. It is a reponse object and contains info like status codes and info about the page.
-                return response.json(); // using then, create a function that expects a response and return that response in json
+        document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('userInput');
+    const button = document.getElementById('searchBtn');
+    const img = document.getElementById('gif');
+
+    const apiKey = '';
+
+    button.addEventListener('click', () => {
+        const query = input.value.trim();
+        if (!query) {
+            alert('Please enter a search term!');
+            return;
+        }
+
+        fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=${query}`, { mode: 'cors' })
+            .then(response => response.json())
+            .then(response => {
+                img.src = response.data.images.original.url;
             })
-            .then(function(response) { // here we have another response object parameter. However, this time it receives the parsed data as its argument
-                console.log(response); // using another then create a function that expects a response and log that response
+            .catch(err => {
+                console.error(err);
+                alert('Something went wrong with the GIF search.');
             });
+    });
+});
+
     </script>
 </body>
 </html>
