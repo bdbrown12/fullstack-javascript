@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="#" alt="A gif">
+    <script>
+        const img = document.querySelector('img');
+        fetch('https://api.giphy.com/v1/gifs/translate?api_key=[INSERT_API_KEY_HERE]', {mode: 'cors'}) //fetch our api call and set the correct mode
+            .then(function(response) { // the response parameter here is automattically passed when a fetch request is successful. It is a reponse object and contains info like status codes and info about the page.
+                return response.json(); // using then, create a function that expects a response and return that response in json
+            })
+            .then(function(response) { // here we have another response object parameter. However, this time it receives the parsed data as its argument
+                console.log(response); // using another then create a function that expects a response and log that response
+            });
+    </script>
+</body>
+</html>
